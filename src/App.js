@@ -17,20 +17,24 @@ function App() {
     { label: "State", value: "state" },
   ]);
   const [dropdownValue, setDropdownValue] = useState("");
+  const [submittedData, setSubmittedData] = useState(null); 
 
   const handleShow = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
 
+ 
   const handleAddSchema = () => {
     if (!dropdownValue) return;
 
     const selectedSchema = availableSchemas.find(
       (schema) => schema.value === dropdownValue
     );
-    setSelectedSchemas([...selectedSchemas, selectedSchema]);
 
-    setAvailableSchemas(availableSchemas.filter((schema) => schema.value !== dropdownValue));
-    setDropdownValue("");
+    if (!selectedSchemas.some(schema => schema.value === dropdownValue)) {
+      setSelectedSchemas([...selectedSchemas, selectedSchema]);
+      setAvailableSchemas(availableSchemas.filter((schema) => schema.value !== dropdownValue));
+      setDropdownValue(""); 
+    }
   };
 
   const handleSubmit = () => {
@@ -39,12 +43,17 @@ function App() {
     }));
 
     const data = {
-      segment_name: segmentName,
-      schema: schemaData,
+      segment_name: segmentName, 
+      schema: schemaData, 
     };
 
-    // Use the webhook URL from webhook.site here
-    axios.post("https://webhook.site/your-webhook-url", data)
+    setSubmittedData(data);
+
+    axios.post("https://webhook.site/your-webhook-url", JSON.stringify(data), {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
       .then((response) => {
         console.log("Data sent successfully:", response);
       })
@@ -72,7 +81,7 @@ function App() {
               <Form.Control
                 type="text"
                 value={segmentName}
-                onChange={(e) => setSegmentName(e.target.value)}
+                onChange={(e) => setSegmentName(e.target.value)} 
               />
             </Form.Group>
 
@@ -102,20 +111,9 @@ function App() {
                     <Form.Control
                       as="select"
                       value={schema.value}
-                      onChange={(e) => {
-                        const updatedSchema = availableSchemas.find(
-                          (s) => s.value === e.target.value
-                        );
-                        const newSelectedSchemas = [...selectedSchemas];
-                        newSelectedSchemas[index] = updatedSchema;
-                        setSelectedSchemas(newSelectedSchemas);
-                      }}
+                      disabled
                     >
-                      {availableSchemas.map((s) => (
-                        <option key={s.value} value={s.value}>
-                          {s.label}
-                        </option>
-                      ))}
+                      <option value={schema.value}>{schema.label}</option>
                     </Form.Control>
                   </div>
                 ))}
@@ -124,14 +122,21 @@ function App() {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="danger" onClick={handleClose}>
             Cancel
           </Button>
-          <Button variant="primary" onClick={handleSubmit}>
+          <Button variant="success" onClick={handleSubmit}>
             Save the Segment
           </Button>
         </Modal.Footer>
       </Modal>
+
+      {submittedData && (
+        <div style={{ marginTop: "20px" }}>
+          <h3>Submitted Data:</h3>
+          <pre>{JSON.stringify(submittedData, null, 2)}</pre>
+        </div>
+      )}
     </div>
   );
 }
