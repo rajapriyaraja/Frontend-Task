@@ -1,0 +1,45 @@
+.events-container {
+    background-color: #f9fbfc;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    max-width: 300px;
+  }
+  
+  h3 {
+    margin: 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e1e1e1;
+  }
+  
+  .event-item {
+    margin-top: 12px;
+  }
+  
+  .event-title {
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .info-icon {
+    color: #007bff;
+    cursor: pointer;
+  }
+  
+  .event-date,
+  .event-details {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .show-all {
+    text-align: right;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 14px;
+    padding-top: 8px;
+  }
+  
