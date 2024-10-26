@@ -1,0 +1,176 @@
+.timer-container-fluid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+}
+
+.timer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+    margin-left: 10px;
+}
+
+.dropdown {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.dropdown label {
+    margin-left: 10px;
+}
+
+.start-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.start-button:hover {
+    background-color: #218838;
+}
+
+.date-input {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.date-input label {
+    margin-left: 10px;
+}
+
+.timer-display {
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.time-info {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.time-info label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.time-info input {
+    width: 100px;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+}
+
+.time-info > div {
+    flex: 1;
+    text-align: center;
+}
+.timer-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.timer-circle {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 5px solid #4CAF50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-size: 1.5em;
+    color: #4CAF50;
+    cursor: pointer;
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.timer-circle.stopped {
+    border-color: red;
+    color: red;
+}
+
+.timer-icon {
+    position: absolute;
+    font-size: 20px;
+    margin-top: 70px;
+    margin-left: 6px;
+    color: inherit;
+}
+
+.stop-icon {
+    color: red;
+}
+
+.play-icon {
+    color: #4CAF50;
+}
+
+.timer-button {
+    position: absolute;
+    bottom: -20px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.timer-button.start {
+    background-color: #4CAF50;
+}
+
+.timer-button.stop {
+    background-color: red;
+}
+.stop-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 210px;
+}
+
+.stop-button:hover {
+    background-color: darkred;
+}
+
+.timer-circle.stopped {
+    border-color: red;
+    color: red;
+}
+
+.timer-icon {
+    position: absolute;
+    font-size: 0.8em;
+    color: inherit;
+}
+.in-color{
+    background-color:rgb(252, 248, 245);
+}
